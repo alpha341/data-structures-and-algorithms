@@ -1,0 +1,125 @@
+#include<iostream>
+using namespace std;
+struct stack
+{
+    int top;
+    int size;
+    char *A;
+
+};
+void insert(stack *);
+void display(stack *);
+void remove(stack *s);
+void peek(stack s);
+void change(stack *s);
+struct stack s;
+int main()
+{
+     s.top=-1;
+    cout<<"enter size";
+    cin>>s.size;
+    s.A=new char[s.size];
+    int cho;
+  while(1)
+  { 
+    cout<<"enter choice"<<endl;
+    cout<<"1--->insert into stack"<<endl;
+    cout<<"2--->remove element"<<endl;
+    cout<<"3--->peek"<<endl;
+    cout<<"4--->CHANGE THE STACK"<<endl;
+    cout<<"5--->isempty"<<endl;
+    cout<<"6--->display stack"<<endl;
+    cin>>cho;
+    switch(cho)
+    { 
+         case 1:
+            insert(&s);
+            break;
+         case 2:
+            remove(&s);
+            break;
+         case 3:
+            peek(s);
+            break;
+         case 4:
+            change(&s);
+            break;
+            /*
+         case 5:
+            deletefirst(root);
+            break;
+            */
+         case 6:
+            display(&s);
+            break;
+         default:
+            cout<<"not in choice";
+
+    }
+  }
+}
+void insert(stack *s)
+{
+    char n;
+ if(s->top==s->size-1)
+ {
+   cout<<"stack is full";
+ }
+ else
+ {
+     cout<<"enter n";
+     cin>>n;
+     s->top++;
+     s->A[s->top] =n;
+
+ }
+}
+void peek(stack s)
+{
+    int pos;
+  cout<<"enter position";
+  cin>>pos;
+  cout<<s.A[s.top-pos+1];
+}
+void change(stack *s)
+{
+    int pos;
+    char ch;
+  cout<<"enter position";
+  cin>>pos;
+  cout<<"enter character to replace";
+  cin>>ch;
+  s->A[s->top-pos+1]=ch;
+}
+void remove(stack *s)
+{
+    char x;
+   if(s->top==-1)
+   {
+       cout<<"stack is empty";
+   }
+   else
+   {
+       x=s->A[s->top];
+       s->top--;
+       cout<<"deleteed succesfully";
+
+   }
+}
+void display(stack *s)
+{
+    if(s->top==-1)
+    {
+        cout<<"stack empty";
+    }
+    else
+    {
+        for(int i=s->top;i>=0;i--)
+        {
+            cout<<s->A[i]<<" ";
+        }
+
+    }
+}
+
+

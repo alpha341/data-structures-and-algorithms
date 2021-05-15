@@ -1,0 +1,124 @@
+#include<iostream>
+using namespace std;
+struct stack
+{
+    int data;
+    stack *next;
+
+};
+struct stack *top=NULL;
+int n;
+void insert(struct stack *);
+void display(struct stack *);
+void remove(struct stack *p);
+void peek(struct stack *p);
+int main()
+{
+    int cho;
+     while(1)
+  { 
+    cout<<"enter choice"<<endl;
+    cout<<"1--->insert into stack"<<endl;
+    cout<<"2--->remove element"<<endl;
+    cout<<"3--->peek"<<endl;
+    cout<<"4--->CHANGE THE STACK"<<endl;
+    cout<<"5--->isempty"<<endl;
+    cout<<"6--->display stack"<<endl;
+    cin>>cho;
+    switch(cho)
+    { 
+         case 1:
+            insert(top);
+            break;
+        
+         case 2:
+            remove(top);
+            break;
+               
+         case 3:
+            peek(top);
+            break;
+            /*
+         case 4:
+            change(top);
+            break
+         case 5:
+            deletefirst(root);
+            break;
+            */
+         case 6:
+            display(top);
+            break;
+         default:
+            cout<<"not in choice";
+
+    }
+  }
+}
+void insert(struct stack *p)
+{
+    struct stack *temp;
+    cout<<"eneter value";
+    cin>>n;
+    temp=new stack;
+    temp->data=n;
+    temp->next=NULL;
+    if(p==NULL)
+    {
+        top=temp;
+
+    }
+    else
+    {
+        temp->next=top;
+        top=temp;
+
+    }
+}
+void remove(struct stack *p)
+{
+    struct stack *q;
+  if(p==NULL)
+  {
+      cout<<"satck is empty";
+  }
+  else
+  {
+      q=top;
+      top=p->next;
+      delete q;
+  } 
+
+
+}
+void peek(struct stack *p)
+{
+  int pos,i=1;
+  cout<<"enter pos";
+  cin>>pos;
+  while(i<pos)
+  {
+   p=p->next;
+   i++;
+  }
+  cout<<p->data;
+
+}
+void display(struct stack *p)
+{
+  if(p==NULL)
+  {
+      cout<<"no elements";
+  }
+  else
+  {
+      while(p!=NULL)
+      {
+          cout<<p->data<<" ";
+          p=p->next;
+      }
+
+  }
+
+}
+
