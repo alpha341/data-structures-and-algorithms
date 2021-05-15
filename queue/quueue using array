@@ -1,0 +1,127 @@
+#include<iostream>
+using namespace std;
+struct queue
+{
+    int front;
+    int *A;
+    int rear; 
+    int size;
+};
+struct queue q;
+void insert(struct queue *);void remove(struct queue *);void display(struct queue );void peek(struct queue );void change(struct queue *);
+int main()
+{
+    q.front=q.rear=-1;
+    int cho,size;
+    cout<<"enter size";
+    cin>>q.size;
+    q.A=new int[q.size];
+    while(1)
+  { 
+    cout<<"enter choice"<<endl;
+    cout<<"1--->insert into queue"<<endl;
+    cout<<"2--->remove element"<<endl;
+    cout<<"3--->peek"<<endl;
+    cout<<"4--->CHANGE THE queuue"<<endl;
+    cout<<"5--->isempty"<<endl;
+    cout<<"6--->display queuue"<<endl;
+    cin>>cho;
+    switch(cho)
+    { 
+         case 1:
+            insert(&q);
+            break;
+         case 2:
+            remove(&q);
+            break;
+         case 3:
+            peek(q);
+            break;
+
+         case 4:
+            change(&q);
+            break;
+          /*  
+         case 5:
+            deletefirst(root);
+            break;
+            */
+         case 6:
+            display(q);
+            break;
+         default:
+            cout<<"not in choice";
+
+    }
+  }
+
+}
+void insert(struct queue *q)
+{
+     int x;
+     cout<<"enter value";
+     cin>>x;
+     if(q->rear==q->size-1)
+     {
+         cout<<"qeuue is full";
+     }
+     else
+     {
+         q->A[++q->rear]=x;
+         
+     }
+
+
+}
+void remove(struct queue *q)
+{
+    int a;
+ if(q->front==q->rear)
+ {
+     cout<<"stack is empty";
+ }
+ else
+ {
+     a=q->A[++q->front];
+
+ }
+}
+void peek(struct queue q)
+{ 
+    int pos,a;
+    cout<<"Enter position ";
+    cin>>pos;
+    q.rear=-1;
+    a=q.A[q.rear+pos];
+    cout<<"peek at element"<<" "<<a<<endl;
+
+}
+void change(struct queue *q)
+{
+ int pos,val;
+ cout<<"enter pos";
+ cin>>pos;
+ cout<<"enter value"<<endl;
+ cin>>val;
+ q->A[pos]=val;
+}
+void display(struct queue q)
+{
+ if(q.front==q.rear)
+ {
+     cout<<"stack is empty";
+ }
+ else
+ {
+     cout<<"queueu elements"<<endl;
+  for(int i=q.front+1;i<=q.rear;i++)
+  {
+      
+     cout<<q.A[i]<<" ";
+  }
+
+ }
+ 
+      
+}
+

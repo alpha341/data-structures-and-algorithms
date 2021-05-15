@@ -1,0 +1,111 @@
+#include<iostream>
+using namespace std;
+struct queue
+{
+    int data;
+    queue *next;
+};
+struct queue *rear=NULL;
+struct queue *front=NULL;
+void insert(struct queue *);
+void remove(struct queue *);
+void display();
+int main()
+{
+   int cho;
+
+     while(1)
+  { 
+    cout<<"enter choice"<<endl;
+    cout<<"1--->insert into queue"<<endl;
+    cout<<"2--->remove element"<<endl;
+    cout<<"3--->peek"<<endl;
+    cout<<"4--->CHANGE THE queuue"<<endl;
+    cout<<"5--->isempty"<<endl;
+    cout<<"6--->display queuue"<<endl;
+    cin>>cho;
+    switch(cho)
+    { 
+         case 1:
+            insert(rear);
+            break;
+         case 2:
+            remove(rear);
+            break;
+            /*
+         case 3:
+            peek(q);
+            break;
+
+         case 4:
+            change(&q);
+            break;
+
+         case 5:
+            deletefirst(root);
+            break;
+            */
+         case 6:
+            display();
+            break;
+         default:
+            cout<<"not in choice";
+    }
+  }
+
+}
+void insert(struct queue *p)
+{
+    int n;
+  struct queue *temp;
+  temp=new queue;
+  if(temp==NULL)
+  {
+      cout<<"enter queue full";
+  }
+  else
+  {
+  cout<<"enter n";
+  cin>>n;
+  temp->data=n;
+  temp->next=NULL;
+  if(front==NULL)
+  {
+      front=rear=temp;
+  }
+  else
+  {
+     rear->next=temp;
+     rear=temp;
+  }
+  }
+}
+void remove(struct queue *p)
+{
+   struct queue *q;
+    if(front==NULL)
+    {
+        cout<<"stack is empty";
+    }
+    else
+    { 
+       q=front;
+       front=front->next;
+       
+       delete q;
+    }
+
+    
+}
+void display()
+{
+ struct queue *p=front;
+ while(p!=NULL)
+ {
+     cout<<p->data<<" ";
+     p=p->next;
+ }
+
+
+}
+
