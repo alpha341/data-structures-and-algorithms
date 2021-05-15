@@ -1,0 +1,109 @@
+#include<iostream>
+using namespace std;
+struct queue
+{
+    int front;
+    int *A;
+    int rear; 
+    int size;
+};
+struct queue q;
+void insert(struct queue *);void remove(struct queue *);void display(struct queue );
+int main()
+{
+    q.front=q.rear=0;
+    int cho,size;
+    cout<<"enter size";
+    cin>>q.size;
+    q.A=new int[q.size];
+    while(1)
+  { 
+    cout<<"enter choice"<<endl;
+    cout<<"1--->insert into queue"<<endl;
+    cout<<"2--->remove element"<<endl;
+    cout<<"3--->peek"<<endl;
+    cout<<"4--->CHANGE THE queuue"<<endl;
+    cout<<"5--->isempty"<<endl;
+    cout<<"6--->display queuue"<<endl;
+    cin>>cho;
+    switch(cho)
+    { 
+         case 1:
+            insert(&q);
+            break;
+         case 2:
+            remove(&q);
+            break;
+            /*
+         case 3:
+            peek(q);
+            break;
+
+         case 4:
+            change(&q);
+            break;
+         case 5:
+            deletefirst(root);
+            break;
+            */
+         case 6:
+            display(q);
+            break;
+         default:
+            cout<<"not in choice";
+
+    }
+  }
+
+}
+void insert(struct queue *q)
+{
+     int x;
+     
+    if((q->rear+1)%q->size==q->front)
+    {
+        cout<<"queuue is full";
+    }
+    else
+    {
+        cout<<"enter value";
+        cin>>x;
+        q->rear=(q->rear+1)%q->size;
+        q->A[q->rear]=x;
+       
+    }
+
+
+}
+void remove(struct queue *q)
+{
+    int a=-1;
+   if(q->front==q->rear)
+   {
+       cout<<"ququeuue is empty";
+   }
+   else
+   {
+           q->front=(q->front+1)%q->size;
+           a=q->A[q->front];
+           
+   }
+}
+void display(struct queue q)
+{
+ if(q.front==q.rear)
+ {
+     cout<<"stack is empty";
+ }
+ else
+ {
+     cout<<"queueu elements"<<endl;
+  for(int i=q.front+1;i!=(q.rear+1)%q.size;i=(i+1)%q.size)
+  {
+      
+     cout<<q.A[i]<<" ";
+  }
+
+ }
+}
+
