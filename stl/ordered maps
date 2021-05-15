@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+  map<int,string>m;
+  m[0]="abc";//map prints in order according to key order
+  m[1]="def";//insertion O(LOGN)time complexity
+  m[2]="ghi";
+  m[5]="ccc";
+  m[3]="ddc";
+  m.insert({6,"cde"});//insert function
+  m[7];//ddefault 0 into maps if second part is inteeger
+    auto it=m.find(1);//returns iterator O(LOGN)
+  m.erase(it);
+  for(auto it=m.begin();it!=m.end();it++)
+  {
+     cout<<(*it).first<<" "<<(*it).second<<endl;
+
+  }
+
+ 
+} 
+
